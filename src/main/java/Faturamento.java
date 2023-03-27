@@ -20,14 +20,14 @@ public class Faturamento {
 
         try {
             // Leitura do arquivo JSON com os dados de faturamento diário
-            Object obj = parser.parse(new FileReader("src/main/java/faturamento.json"));
+            Object obj = parser.parse(new FileReader("src/main/java/dados.json"));
             JSONArray faturamentoJsonArray = (JSONArray) obj;
 
             // for para armazenar o valor de faturamento diário em um ArrayList e calcular a soma total
             for (Object o : faturamentoJsonArray) {
                 JSONObject faturamentoJsonObject = (JSONObject) o;
                 Double valor = Double.parseDouble(faturamentoJsonObject.get("valor").toString());
-                String data = faturamentoJsonObject.get("data").toString();
+                String data = faturamentoJsonObject.get("dia").toString();
                 // Se o valor de faturamento for maior que zero, adiciona à lista e atualiza a soma e o número de dias
                 if (valor > 0) {
                     faturamento.add(valor);
